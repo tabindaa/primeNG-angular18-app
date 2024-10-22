@@ -1,0 +1,24 @@
+<p-card
+  header="{{ recipe.name }}"
+  subheader="{{ recipe.cuisine }}"
+  [style]="{ width: '360px' }"
+>
+  <ng-template pTemplate="header">
+    <img [ngSrc]="recipe.image" [alt]="recipe.name" width="280" height="280" 
+    [priority]="isFirst"    />
+  </ng-template>
+
+  @for (item of recipe.ingredients; track $index) {
+  <p>{{ item }}</p>
+  }
+  <ng-template pTemplate="footer">
+    <div class="flex gap-3 mt-1">
+      <p-rating
+        [(ngModel)]="recipe.rating"
+        [readonly]="true"
+        [cancel]="false"
+      /> {{recipe.rating}} ratings
+      <!-- <p-button label="Save" class="w-full" styleClass="w-full" /> -->
+    </div>
+  </ng-template>
+</p-card>
